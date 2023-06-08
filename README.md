@@ -1,5 +1,5 @@
 # Aplicacion-web
-Despliegue en Amazon Web Servicie
+Despliegue en Amazon Web Servicie (API RETS)
 
 Sistema gestor para incricripciones de materia
 
