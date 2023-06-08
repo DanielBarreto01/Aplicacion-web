@@ -13,7 +13,7 @@ Almacenamito en block storage (Front),
 Despliegue AWS con Serverless Framework(Back),
 
 lAMBDAS
-Estudintes,,
+Estudintes,
 Usiarios,
 Materias,
 Incripciones,
@@ -22,9 +22,8 @@ MailTO(fUNCION CON CLOUDWACTH QUE ENVIA CORREO EN UNA HORA EN ESPESIFICA DEL DIA
 IMG(fUNICON QUUE ALMACENA LA IMAGEN EN S3 Y EL ENLACE DE LA IMAGEN EN PATH(BASE DE DATOS)),
 
 S3
-
-Almacenamiro estatico de Front,
-Almcaneamieto de imagenes,
+Almacenamiento estatico de Front,
+Almacenamiento de imagenes,
 
 
 Base de Datos en DBS (AWS)
