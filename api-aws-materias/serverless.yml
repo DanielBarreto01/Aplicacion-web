@@ -1,0 +1,35 @@
+app: api-materias
+service: api-materias
+frameworkVersion: '3'
+
+# configuration provider to AWS Lambda and API Gateway
+provider:
+  name: aws
+  runtime: nodejs18.x
+  stage: dev
+  region: us-east-2
+# Profile "default" is default in AWS CLI
+  profile: admin
+
+functions:
+  api:
+    handler: index.handler
+    events:
+      - httpApi: '*'
+
+# Documentation for more configuration https://www.prisma.io/docs/guides/deployment/deployment-guides/use-prisma-with-serverless-framework
+plugins:
+  - serverless-dotenv-plugin
+  - serverless-webpack
+  - serverless-webpack-prisma
+
+custom:
+  webpack:
+    includeModules: true
+
+package:
+  patterns:
+    - '!node_modules/.prisma/client/libquery_engine-*'
+    - 'node_modules/.prisma/client/libquery_engine-rhel-*'
+    - '!node_modules/prisma/libquery_engine-*'
+    - '!node_modules/@prisma/engines/**'

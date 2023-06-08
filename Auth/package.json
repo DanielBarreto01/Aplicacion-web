@@ -1,0 +1,13 @@
+{
+  "name": "api-usuarios",
+  "version": "1.0.0",
+  "description": "Packaged externals for api-usuarios",
+  "private": true,
+  "scripts": {},
+  "dependencies": {
+    "@prisma/client": "^4.11.0",
+    "bcryptjs": "^2.4.3",
+    "jsonwebtoken": "^9.0.0",
+    "mysql": "^2.18.1"
+  }
+}

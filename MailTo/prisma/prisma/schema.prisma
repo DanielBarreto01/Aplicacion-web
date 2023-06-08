@@ -1,0 +1,55 @@
+generator client {
+  provider = "prisma-client-js"
+  // Targets necessary for the client to work on the server
+  binaryTargets = ["native", "rhel-openssl-1.0.x"]
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model credenciales {
+  usuario    String   @id @db.VarChar(45)
+  contrasena String   @db.VarChar(60)
+  usuarios   usuarios @relation(fields: [usuario], references: [correo_electronico], onDelete: Cascade, map: "credenciales_ibfk_1")
+}
+
+model estudiantes {
+  codigo           Int             @id @default(autoincrement())
+  nombre           String          @db.VarChar(45)
+  apellido         String          @db.VarChar(45)
+  tipo_documento   String          @db.VarChar(45)
+  numero_documento String          @db.VarChar(15)
+  estado           String?         @db.VarChar(1)
+  genero           String?         @db.VarChar(3)
+  path             String          @db.VarChar(200)
+  inscripciones    inscripciones[]
+}
+
+model inscripciones {
+  id_inscripcion    Int         @id @default(autoincrement()) @db.UnsignedInt
+  codigo_estudiante Int
+  codigo_materia    Int
+  fecha_inscripcion DateTime    @db.Date
+  estudiantes       estudiantes @relation(fields: [codigo_estudiante], references: [codigo], onDelete: Cascade, map: "inscripciones_ibfk_1")
+  materias          materias    @relation(fields: [codigo_materia], references: [codigo], onDelete: Cascade, map: "inscripciones_ibfk_2")
+
+  @@index([codigo_estudiante], map: "codigo_estudiante")
+  @@index([codigo_materia], map: "codigo_materia")
+}
+
+model materias {
+  codigo        Int             @id @default(autoincrement())
+  nombre        String          @db.VarChar(45)
+  cupos         Int?
+  estado        String?         @db.VarChar(1)
+  inscripciones inscripciones[]
+}
+
+model usuarios {
+  nombre_usuario     String        @db.VarChar(30)
+  correo_electronico String        @id @db.VarChar(45)
+  estado             Int           @db.TinyInt
+  credenciales       credenciales?
+}
