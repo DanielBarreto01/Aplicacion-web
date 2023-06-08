@@ -1,4 +1,5 @@
 # Aplicacion-web
+##node js , JavaScrip ,Angular
 Despliegue en Amazon Web Servicie (API RETS)
 
 Sistema gestor para incricripciones de materia
